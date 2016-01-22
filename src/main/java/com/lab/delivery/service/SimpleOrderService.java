@@ -5,6 +5,7 @@ import com.lab.delivery.domain.Order;
 import com.lab.delivery.domain.Pizza;
 import com.lab.delivery.repository.InMemOrderRepository;
 import com.lab.delivery.repository.OrderRepository;
+import com.lab.delivery.tools.ServiceLocator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,19 +17,19 @@ import java.util.Map;
  */
 public class SimpleOrderService implements OrderService{
 
-    private OrderRepository orderRepository = new InMemOrderRepository();
-    private PizzaService pizzaService = new SimplePizzaService();
+    private OrderRepository orderRepository = (OrderRepository) ServiceLocator.getInstance().getService("orderRepository");
+    private PizzaService pizzaService = (PizzaService) ServiceLocator.getInstance().getService("pizzaService");
 
     public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
 
         for(Integer id : pizzasID){
-            pizzas.add(getPizzaByID(id));  // get Pizza from predifined in-memory list
+            pizzas.add(getPizzaByID(id));
         }
 
         Order newOrder = new Order(1, customer, pizzas);
 
-        saveOrder(newOrder);  // set Order Id and save Order to in-memory list
+        saveOrder(newOrder);
         return newOrder;
     }
 
