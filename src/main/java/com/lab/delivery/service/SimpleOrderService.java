@@ -17,8 +17,13 @@ import java.util.Map;
  */
 public class SimpleOrderService implements OrderService{
 
-    private OrderRepository orderRepository = (OrderRepository) ServiceLocator.getInstance().getService("orderRepository");
-    private PizzaService pizzaService = (PizzaService) ServiceLocator.getInstance().getService("pizzaService");
+    private OrderRepository orderRepository;
+    private PizzaService pizzaService;
+
+    public SimpleOrderService(OrderRepository orderRepository, PizzaService pizzaService) {
+        this.orderRepository = orderRepository;
+        this.pizzaService = pizzaService;
+    }
 
     public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();

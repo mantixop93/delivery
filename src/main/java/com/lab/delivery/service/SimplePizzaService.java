@@ -10,7 +10,11 @@ import com.lab.delivery.tools.ServiceLocator;
  */
 public class SimplePizzaService implements  PizzaService {
 
-    PizzaRepository repository = (PizzaRepository) ServiceLocator.getInstance().getService("pizzaRepository");
+    PizzaRepository repository;
+
+    public SimplePizzaService(PizzaRepository pizzaRepository) {
+        repository = pizzaRepository;
+    }
 
     public Pizza find(Integer id) {
         return repository.findById(id);
