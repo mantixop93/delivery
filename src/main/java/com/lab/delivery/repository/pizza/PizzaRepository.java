@@ -1,4 +1,4 @@
-package com.lab.delivery.repository;
+package com.lab.delivery.repository.pizza;
 
 import com.lab.delivery.domain.Pizza;
 

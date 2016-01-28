@@ -1,14 +1,13 @@
-package com.lab.delivery.service;
+package com.lab.delivery.service.pizza;
 
 import com.lab.delivery.domain.Pizza;
-import com.lab.delivery.repository.InMemPizzaRepository;
-import com.lab.delivery.repository.PizzaRepository;
-import com.lab.delivery.tools.ServiceLocator;
+import com.lab.delivery.repository.pizza.PizzaRepository;
+import com.lab.delivery.service.pizza.PizzaService;
 
 /**
  * Created by Mantixop on 1/21/16.
  */
-public class SimplePizzaService implements  PizzaService {
+public class SimplePizzaService implements PizzaService {
 
     PizzaRepository repository;
 

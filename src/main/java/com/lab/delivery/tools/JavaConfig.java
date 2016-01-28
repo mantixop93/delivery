@@ -1,9 +1,9 @@
 package com.lab.delivery.tools;
 
-import com.lab.delivery.repository.InMemPizzaRepository;
-import com.lab.delivery.repository.InMemOrderRepository;
-import com.lab.delivery.service.SimpleOrderService;
-import com.lab.delivery.service.SimplePizzaService;
+import com.lab.delivery.repository.pizza.InMemPizzaRepository;
+import com.lab.delivery.repository.order.InMemOrderRepository;
+import com.lab.delivery.service.order.SimpleOrderService;
+import com.lab.delivery.service.pizza.SimplePizzaService;
 
 import java.util.HashMap;
 import java.util.Map;

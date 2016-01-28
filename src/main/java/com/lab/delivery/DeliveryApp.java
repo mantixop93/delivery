@@ -1,7 +1,7 @@
 package com.lab.delivery;
 
 import com.lab.delivery.domain.Order;
-import com.lab.delivery.service.OrderService;
+import com.lab.delivery.service.order.OrderService;
 import com.lab.delivery.tools.ApplicationContext;
 import com.lab.delivery.tools.JavaConfig;
 import com.lab.delivery.tools.JavaConfigApplicationContext;

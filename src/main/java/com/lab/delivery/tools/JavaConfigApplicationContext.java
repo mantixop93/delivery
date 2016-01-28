@@ -1,6 +1,5 @@
 package com.lab.delivery.tools;
 
-import com.lab.delivery.repository.PizzaRepository;
 import com.lab.delivery.tools.annotations.Benchmark;
 import com.lab.delivery.tools.annotations.PostCreate;
 import com.lab.delivery.tools.proxies.BenchmarkProxyFactory;
@@ -78,7 +77,7 @@ public class JavaConfigApplicationContext implements ApplicationContext {
             try {
 
                 for (Method method : type.getMethods()) {
-                    if(method.isAnnotationPresent(PostCreate.class)) {
+                    if (method.isAnnotationPresent(PostCreate.class)) {
                         bean.getClass().getMethod(method.getName()).invoke(bean);
                     }
                 }

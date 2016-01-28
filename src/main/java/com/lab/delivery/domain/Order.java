@@ -9,11 +9,13 @@ public class Order {
     private Integer id;
     private Customer customer;
     private List<Pizza> pizzas;
+    private Status status;
 
-    public Order(Integer id,Customer customer, List<Pizza> pizzas) {
+    public Order(Integer id, Customer customer, List<Pizza> pizzas, Status status) {
         this.id = id;
         this.customer = customer;
         this.pizzas = pizzas;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -40,6 +42,14 @@ public class Order {
         this.pizzas = pizzas;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -47,5 +57,23 @@ public class Order {
                 ", customer=" + customer +
                 ", pizzas=" + pizzas +
                 '}';
+    }
+
+    public enum Status {
+        NEW(1),
+        IN_PROGRSS(2),
+        CANCELED(3),
+        CLOSED(4),
+        DONE(5);
+
+        private final int value;
+
+        private Status(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }

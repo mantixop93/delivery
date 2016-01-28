@@ -1,6 +1,7 @@
-package com.lab.delivery.repository;
+package com.lab.delivery.repository.pizza;
 
 import com.lab.delivery.domain.Pizza;
+import com.lab.delivery.repository.pizza.PizzaRepository;
 import com.lab.delivery.tools.annotations.Benchmark;
 import com.lab.delivery.tools.annotations.PostCreate;
 
@@ -16,14 +17,14 @@ public class InMemPizzaRepository implements PizzaRepository {
 
     @Benchmark
     public void init() {
-        pizzasDB.put(1, new Pizza(1,"Sea",20d,Pizza.PizzaTipe.Sea));
-        pizzasDB.put(2, new Pizza(2,"Meat",10d,Pizza.PizzaTipe.Meat));
-        pizzasDB.put(3, new Pizza(3,"Vegetarian",30d,Pizza.PizzaTipe.Vegetarian));
+        pizzasDB.put(1, new Pizza(1, "Sea", 20, Pizza.PizzaTipe.Sea));
+        pizzasDB.put(2, new Pizza(2, "Meat", 10, Pizza.PizzaTipe.Meat));
+        pizzasDB.put(3, new Pizza(3, "Vegetarian", 30, Pizza.PizzaTipe.Vegetarian));
     }
 
     @PostCreate
     public void myInit() {
-        pizzasDB.put(4, new Pizza(4,"California",30d,Pizza.PizzaTipe.Vegetarian));
+        pizzasDB.put(4, new Pizza(4, "California", 30, Pizza.PizzaTipe.Vegetarian));
     }
 
 
