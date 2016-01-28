@@ -9,6 +9,7 @@ import com.lab.delivery.tools.JavaConfigApplicationContext;
 /**
  * Created by Mantixop on 1/21/16.
  */
+
 public class DeliveryApp {
     public static void main(String[] args) {
         ApplicationContext context = new JavaConfigApplicationContext(new JavaConfig());

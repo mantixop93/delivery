@@ -7,4 +7,6 @@ import com.lab.delivery.domain.Pizza;
  */
 public interface PizzaRepository {
     Pizza findById(Integer id);
+    void init();
+    void myInit();
 }

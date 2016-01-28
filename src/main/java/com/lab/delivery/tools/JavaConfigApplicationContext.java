@@ -1,11 +1,11 @@
 package com.lab.delivery.tools;
 
+import com.lab.delivery.repository.PizzaRepository;
+import com.lab.delivery.tools.annotations.Benchmark;
 import com.lab.delivery.tools.annotations.PostCreate;
+import com.lab.delivery.tools.proxies.BenchmarkProxyFactory;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +30,8 @@ public class JavaConfigApplicationContext implements ApplicationContext {
 
             BeanBuilder builder = new BeanBuilder(type);
             builder.construct();
-            builder.afterConstruct();
             builder.createProxy();
+            builder.afterConstruct();
             Object object = builder.build();
 
             cache.put(beanName, object);
@@ -75,18 +75,17 @@ public class JavaConfigApplicationContext implements ApplicationContext {
         }
 
         public void afterConstruct() {
-            Class<?> clazz = bean.getClass();
             try {
 
-                for (Method method : clazz.getMethods()) {
+                for (Method method : type.getMethods()) {
                     if(method.isAnnotationPresent(PostCreate.class)) {
-                        method.invoke(bean);
+                        bean.getClass().getMethod(method.getName()).invoke(bean);
                     }
                 }
 
-                for (Method method : clazz.getMethods()) {
+                for (Method method : type.getMethods()) {
                     if (method.getName().equals("init") && !(method.isAnnotationPresent(PostCreate.class))) {
-                        method.invoke(bean);
+                        bean.getClass().getMethod(method.getName()).invoke(bean);
                     }
                 }
 
@@ -94,11 +93,17 @@ public class JavaConfigApplicationContext implements ApplicationContext {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
             }
         }
 
         public void createProxy() {
-
+            for (Method method : bean.getClass().getMethods()){
+                if (method.isAnnotationPresent(Benchmark.class)) {
+                    bean = BenchmarkProxyFactory.getBenchmarkProxy(bean);
+                }
+            }
         }
 
         public Object build() {
