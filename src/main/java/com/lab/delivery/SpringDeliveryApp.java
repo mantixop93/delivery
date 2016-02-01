@@ -14,8 +14,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringDeliveryApp {
     public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[]{"appContext.xml", "repositoryContext.xml"});
-        SimpleOrderService orderService = applicationContext.getBean("orderService", SimpleOrderService.class);
+        ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("appContext.xml");
+        for (String string : applicationContext.getBeanDefinitionNames()) {
+            System.out.println(string);
+        }
+        SimpleOrderService orderService = applicationContext.getBean("simpleOrderService", SimpleOrderService.class);
         Order  order = orderService.placeNewOrder(new Customer(1,"123", new Address(1, "Kyiv"), 100), 1,1,1,1,1);
         System.out.println(order);
         orderService.cookOrder(order);

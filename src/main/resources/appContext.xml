@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+        default-autowire="byType">
 
-       <bean id = "addressService" class="com.lab.delivery.service.address.SimpleAddressService" >
-              <constructor-arg ref="addressRepo"/>
-       </bean>
-       <bean id = "pizzaService" class="com.lab.delivery.service.pizza.SimplePizzaService">
-              <constructor-arg ref="pizzaRepo"/>
-       </bean>
-       <bean id = "customerService" class="com.lab.delivery.service.customer.SimpleCustomerService">
-              <constructor-arg ref="customerRepo"/>
-              <constructor-arg ref="addressService"/>
-       </bean>
+    <import resource="repositoryContext.xml"/>
 
-       <bean id = "orderService" class="com.lab.delivery.service.order.SimpleOrderService">
-              <constructor-arg ref="orderRepo"/>
-              <constructor-arg ref="pizzaService"/>
-              <constructor-arg ref="customerService"/>
-              <constructor-arg ref="discount"/>
-       </bean>
-       <bean id = "discount" class="com.lab.delivery.domain.discount.MostExpensivePizzaDiscount"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.lab.delivery.service">
+    </context:component-scan>
+
 </beans>

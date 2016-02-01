@@ -8,6 +8,9 @@ import com.lab.delivery.repository.customer.CustomerRepository;
 import com.lab.delivery.repository.order.OrderRepository;
 import com.lab.delivery.service.customer.CustomerService;
 import com.lab.delivery.service.pizza.PizzaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,7 @@ import static com.lab.delivery.domain.Order.Status.*;
  * Created by Mantixop on 1/21/16.
  */
 
+@Service
 public class SimpleOrderService implements OrderService {
 
     private static final double MAX_ACCUMULATIVE_DISCOUNT = 0.3d;
@@ -27,6 +31,7 @@ public class SimpleOrderService implements OrderService {
     private CustomerService customerService;
     private Discount discount;
 
+    @Autowired
     public SimpleOrderService(OrderRepository orderRepository, PizzaService pizzaService, CustomerService customerService, Discount discount) {
         this.orderRepository = orderRepository;
         this.pizzaService = pizzaService;
