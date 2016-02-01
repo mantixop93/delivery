@@ -41,7 +41,7 @@ public class Pizza {
     }
 
     public enum PizzaTipe {
-        Vegetarian, Sea, Meat
+        VEGETERIAN, SEA, MEAT
     }
 
     @Override

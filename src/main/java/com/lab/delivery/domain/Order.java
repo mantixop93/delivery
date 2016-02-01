@@ -2,10 +2,15 @@ package com.lab.delivery.domain;
 
 import java.util.List;
 
+import static com.lab.delivery.domain.Order.Status.CANCELED;
+
 /**
  * Created by Mantixop on 1/21/16.
  */
 public class Order {
+
+    private static final int MAX_ORDER_CAPACITY = 10;
+
     private Integer id;
     private Customer customer;
     private List<Pizza> pizzas;
@@ -42,12 +47,36 @@ public class Order {
         this.pizzas = pizzas;
     }
 
+    public int addPizzas(Pizza... additionalPizzas) {;
+        int count = 0;
+        for (Pizza pizza : additionalPizzas) {
+            if (this.pizzas.size() >= MAX_ORDER_CAPACITY) {
+                break;
+            }
+            pizzas.add(pizza);
+            count++;
+        }
+        return count;
+    }
+
     public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus (Status newStatus) {
+        if (newStatus == CANCELED) {
+            this.status = CANCELED;
+        } else if ((newStatus.getValue() - status.getValue()) >= 0) {
+            this.status = newStatus;
+        }
+    }
+
+    public int getPrice () {
+        int price = 0;
+        for (Pizza pizza : pizzas) {
+            price += pizza.getPrice();
+        }
+        return price;
     }
 
     @Override
@@ -56,6 +85,7 @@ public class Order {
                 "id=" + id +
                 ", customer=" + customer +
                 ", pizzas=" + pizzas +
+                ", status=" + status +
                 '}';
     }
 
@@ -63,8 +93,8 @@ public class Order {
         NEW(1),
         IN_PROGRSS(2),
         CANCELED(3),
-        CLOSED(4),
-        DONE(5);
+        DONE(4),
+        CLOSED(5);
 
         private final int value;
 

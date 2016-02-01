@@ -5,23 +5,37 @@ package com.lab.delivery.domain;
  */
 public class Customer {
 
+    private static final double MAX_BONUS = 0.1;
+
     private int id;
     private String name;
     private Address address;
-    private AccumulativeCard accumulativeCard;
+    private Integer accumulativeCard;
 
-    public Customer(int id, String name, Address address, AccumulativeCard accumulativeCard) {
+    public Customer(int id, String name, Address address, Integer accumulativeCard) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.accumulativeCard = accumulativeCard;
     }
 
-    public AccumulativeCard getAccumulativeCard() {
+    public Integer getAccumulativeCard() {
         return accumulativeCard;
     }
 
-    public void setAccumulativeCard(AccumulativeCard accumulativeCard) {
+    public int getBonus() {
+        return (int) (accumulativeCard * MAX_BONUS);
+    }
+
+    public void addToAccumulativeCard (int bonus){
+        accumulativeCard += bonus;
+    }
+
+    public void withdrawFromAccumulativeCard (int discount) {
+        accumulativeCard -= discount;
+    }
+
+    public void setAccumulativeCard(Integer accumulativeCard) {
         this.accumulativeCard = accumulativeCard;
     }
 

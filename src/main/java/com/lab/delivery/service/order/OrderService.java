@@ -9,6 +9,4 @@ import com.lab.delivery.domain.Pizza;
  */
 public interface OrderService {
     Order placeNewOrder(Customer customer, Integer ... pizzasID);
-    int addPizzasToOrder(Order order,Pizza... pizzas);
-    int getOrderPrice(Order order);
 }

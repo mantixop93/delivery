@@ -3,6 +3,22 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean id = "pizzaRepo" class="com.lab.delivery.repository.pizza.InMemPizzaRepository" init-method="init"/>
+       <bean id = "addressService" class="com.lab.delivery.service.address.SimpleAddressService" >
+              <constructor-arg ref="addressRepo"/>
+       </bean>
+       <bean id = "pizzaService" class="com.lab.delivery.service.pizza.SimplePizzaService">
+              <constructor-arg ref="pizzaRepo"/>
+       </bean>
+       <bean id = "customerService" class="com.lab.delivery.service.customer.SimpleCustomerService">
+              <constructor-arg ref="customerRepo"/>
+              <constructor-arg ref="addressService"/>
+       </bean>
 
+       <bean id = "orderService" class="com.lab.delivery.service.order.SimpleOrderService">
+              <constructor-arg ref="orderRepo"/>
+              <constructor-arg ref="pizzaService"/>
+              <constructor-arg ref="customerService"/>
+              <constructor-arg ref="discount"/>
+       </bean>
+       <bean id = "discount" class="com.lab.delivery.domain.discount.MostExpensivePizzaDiscount"/>
 </beans>
