@@ -12,10 +12,9 @@ public class Customer {
     private Address address;
     private Integer accumulativeCard;
 
-    public Customer(int id, String name, Address address, Integer accumulativeCard) {
+    public Customer(int id, String name, Integer accumulativeCard) {
         this.id = id;
         this.name = name;
-        this.address = address;
         this.accumulativeCard = accumulativeCard;
     }
 
@@ -61,5 +60,15 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", accumulativeCard=" + accumulativeCard +
+                '}';
     }
 }

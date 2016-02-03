@@ -9,6 +9,18 @@ import java.lang.reflect.Proxy;
  * Created by Mantixop on 1/27/16.
  */
 public class BenchmarkProxyFactory {
+    public static Object checkForBenchmarkAndGetProxy(Object o) {
+        Method[] methods = o.getClass().getMethods();
+
+        for (Method method: methods) {
+            if (method.isAnnotationPresent(Benchmark.class)) {
+                return getBenchmarkProxy(o);
+            }
+        }
+
+        return o;
+    }
+
     public static Object getBenchmarkProxy(final Object o) {
         return  Proxy.newProxyInstance(o.getClass().getClassLoader(), o.getClass().getInterfaces(), new InvocationHandler() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

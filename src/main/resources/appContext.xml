@@ -5,13 +5,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
-        default-autowire="byType">
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <import resource="repositoryContext.xml"/>
 
-    <context:annotation-config/>
+    <bean class="com.lab.delivery.tools.infrastructure.BenchmarkBeanPostProcessor"/>
+    <!--<bean name="newCustomer" class="com.lab.delivery.domain.Customer">-->
+        <!--<constructor-arg name="id" value="100" />-->
+        <!--<constructor-arg name="name" value="Jack"/>-->
+        <!--<constructor-arg name="accumulativeCard" value="0"/>-->
+    <!--</bean>-->
+    <!--<bean class="com.lab.delivery.tools.infrastructure.CustomBeanFactoryPostProcessor"/>-->
     <context:component-scan base-package="com.lab.delivery.service">
     </context:component-scan>
-
+    <context:component-scan base-package="com.lab.delivery.domain">
+        <context:include-filter type="annotation" expression="com.lab.delivery.tools.annotations.MyComponent"/>
+    </context:component-scan>
 </beans>

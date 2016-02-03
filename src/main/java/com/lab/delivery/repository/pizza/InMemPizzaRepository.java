@@ -31,9 +31,9 @@ public class InMemPizzaRepository implements PizzaRepository {
 
     @PostConstruct
     public void init() {
-        pizzasDB.put(1, new Pizza(1, "Sea", 20, Pizza.PizzaTipe.SEA));
-        pizzasDB.put(2, new Pizza(2, "Meat", 10, Pizza.PizzaTipe.MEAT));
-        pizzasDB.put(3, new Pizza(3, "Vegetarian", 30, Pizza.PizzaTipe.VEGETERIAN));
+        pizzasDB.put(1, new Pizza(1, "Sea", 20, Pizza.PizzaType.SEA));
+        pizzasDB.put(2, new Pizza(2, "Meat", 10, Pizza.PizzaType.MEAT));
+        pizzasDB.put(3, new Pizza(3, "Vegetarian", 30, Pizza.PizzaType.VEGETERIAN));
     }
 
 
