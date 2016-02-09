@@ -1,6 +1,7 @@
-package com.lab.delivery.repository.pizza;
+package com.lab.delivery.repository;
 
 import com.lab.delivery.domain.Pizza;
+import com.lab.delivery.repository.pizza.PizzaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;

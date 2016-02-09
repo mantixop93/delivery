@@ -55,6 +55,7 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
         saveOrder(newOrder);
         return newOrder;
     }
+
     @Benchmark
     public Order cookOrder(Order order) {
         order.setStatus(DONE);

@@ -7,8 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <import resource="repositoryContext.xml"/>
-
     <bean class="com.lab.delivery.tools.infrastructure.BenchmarkBeanPostProcessor"/>
     <!--<bean name="newCustomer" class="com.lab.delivery.domain.Customer">-->
         <!--<constructor-arg name="id" value="100" />-->

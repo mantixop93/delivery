@@ -1,7 +1,6 @@
 package com.lab.delivery.tools.listeners;
 
 import com.lab.delivery.domain.Order;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 
 /**

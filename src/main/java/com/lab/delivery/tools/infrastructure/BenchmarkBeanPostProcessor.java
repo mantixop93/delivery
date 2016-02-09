@@ -5,8 +5,6 @@ import com.lab.delivery.tools.proxies.BenchmarkProxyFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
-import java.lang.reflect.Method;
-
 /**
  * Created by Mantixop on 2/3/16.
  */

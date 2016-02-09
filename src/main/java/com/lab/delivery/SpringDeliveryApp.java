@@ -17,7 +17,7 @@ public class SpringDeliveryApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("appContext.xml");
         applicationContext.addApplicationListener(new OrderServiceListner());
-        OrderService orderService = applicationContext.getBean("simpleOrderService", OrderService.class);
+        OrderService orderService = applicationContext.getBean( OrderService.class);
         Order order = orderService.placeNewOrder(new Customer(1,"123", 100), 1,1,1,1,1);
     }
 }

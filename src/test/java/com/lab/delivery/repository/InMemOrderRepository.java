@@ -1,4 +1,4 @@
-package com.lab.delivery.repository.order;
+package com.lab.delivery.repository;
 
 import com.lab.delivery.domain.Order;
 import com.lab.delivery.repository.order.OrderRepository;

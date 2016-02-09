@@ -3,7 +3,6 @@ package com.lab.delivery.domain.discount;
 import com.lab.delivery.domain.Order;
 import com.lab.delivery.domain.Pizza;
 import com.lab.delivery.tools.annotations.MyComponent;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

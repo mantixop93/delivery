@@ -1,5 +1,6 @@
-package com.lab.delivery.repository.address;
+package com.lab.delivery.repository;
 
+import com.lab.delivery.repository.address.AddressRepository;
 import org.springframework.stereotype.Repository;
 
 /**
