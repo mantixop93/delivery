@@ -1,8 +1,7 @@
-package com.lab.delivery.repository;
+package com.lab.delivery.repository.order;
 
 import com.lab.delivery.domain.Order;
 import com.lab.delivery.repository.order.OrderRepository;
-import com.lab.delivery.tools.annotations.Benchmark;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

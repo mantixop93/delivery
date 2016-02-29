@@ -1,4 +1,4 @@
-package com.lab.delivery.repository;
+package com.lab.delivery.repository.customer;
 
 import com.lab.delivery.domain.Customer;
 import com.lab.delivery.repository.customer.CustomerRepository;

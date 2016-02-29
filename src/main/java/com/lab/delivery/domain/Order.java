@@ -1,5 +1,6 @@
 package com.lab.delivery.domain;
 
+import javax.persistence.*;
 import java.util.List;
 
 import static com.lab.delivery.domain.Order.Status.CANCELED;
@@ -7,14 +8,32 @@ import static com.lab.delivery.domain.Order.Status.CANCELED;
 /**
  * Created by Mantixop on 1/21/16.
  */
+
+@Entity
+@Table(name = "orders")
 public class Order {
 
     private static final int MAX_ORDER_CAPACITY = 10;
 
+    @Id
+    @Column(name = "order_id")
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "order_customer", nullable = false)
     private Customer customer;
+
+    @ManyToMany
+    @JoinTable(
+            name="order_pizza",
+            joinColumns=@JoinColumn(name="order_id", referencedColumnName="order_id"),
+            inverseJoinColumns=@JoinColumn(name="pizza_id", referencedColumnName="pizza_id"))
     private List<Pizza> pizzas;
+
+    @Column(name = "order_status")
+    @Enumerated(EnumType.STRING)
     private Status status;
+
 
     public Order(Integer id, Customer customer, List<Pizza> pizzas, Status status) {
         this.id = id;
@@ -22,6 +41,8 @@ public class Order {
         this.pizzas = pizzas;
         this.status = status;
     }
+
+
 
     public Integer getId() {
         return id;

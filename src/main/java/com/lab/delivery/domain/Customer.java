@@ -1,22 +1,39 @@
 package com.lab.delivery.domain;
 
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by Mantixop on 1/21/16.
  */
+@Entity
+@Table(name = "customer")
 public class Customer {
 
     private static final double MAX_BONUS = 0.1;
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    private Integer id;
+
+    @Column(name = "customer_name")
     private String name;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="address_id", nullable = false)
     private Address address;
+
+    @Column(name = "customer_card")
     private Integer accumulativeCard;
 
-    public Customer(int id, String name, Integer accumulativeCard) {
-        this.id = id;
-        this.name = name;
-        this.accumulativeCard = accumulativeCard;
-    }
+
 
     public Integer getAccumulativeCard() {
         return accumulativeCard;

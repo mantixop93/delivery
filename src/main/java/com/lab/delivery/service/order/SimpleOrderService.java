@@ -7,8 +7,6 @@ import com.lab.delivery.domain.discount.Discount;
 import com.lab.delivery.repository.order.OrderRepository;
 import com.lab.delivery.service.customer.CustomerService;
 import com.lab.delivery.service.pizza.PizzaService;
-import com.lab.delivery.tools.annotations.Benchmark;
-import com.lab.delivery.tools.listeners.OrderCreatedEvent;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -41,8 +39,7 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
         this.discount = discount;
     }
 
-    @Benchmark
-    @Override
+
     public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
 
@@ -51,12 +48,10 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
         }
 
         Order newOrder = new Order(1, customer, pizzas, NEW);
-        applicationContext.publishEvent(new OrderCreatedEvent(applicationContext, newOrder));
         saveOrder(newOrder);
         return newOrder;
     }
 
-    @Benchmark
     public Order cookOrder(Order order) {
         order.setStatus(DONE);
         return order;
@@ -82,7 +77,6 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
         return pizzaService.find(id);
     }
 
-    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
