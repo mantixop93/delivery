@@ -84,4 +84,15 @@ public class UserController {
         }
         return "redirect:/edit";
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String viewLogin() {
+        return "user/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET, params = "error")
+    public String viewLoginWithError(Model model) {
+        model.addAttribute("error", true);
+        return "user/login";
+    }
 }

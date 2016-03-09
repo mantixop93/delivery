@@ -5,23 +5,28 @@
   Time: 2:06 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-  Add new pizza:
-  <form action="edit" method="post">
+
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<t:genericpage>
+    <jsp:attribute name="title">
+         Add new pizza:
+    </jsp:attribute>
+    <jsp:attribute name="header">
+       Add new pizza:
+    </jsp:attribute>
+  <jsp:body>
+    <form action="edit" method="post">
     <input type="hidden" name="id" value="${pizza.id}"/>
     Name:<input type="text" name="name" value="${pizza.name}">
     Price:<input type="number" name="price" value="${pizza.price}">
     Type:<select type="text" name="pizzaType" value="${pizza.pizzaType}">
-      <c:forEach items="${types}" var="type">
-        <option>${type}</option>
-      </c:forEach>
-  </select>
+    <c:forEach items="${types}" var="type">
+      <option>${type}</option>
+    </c:forEach>
+    </select>
     <input type="submit" name="Ok">
-</body>
-</html>
+  </jsp:body>
+</t:genericpage>
