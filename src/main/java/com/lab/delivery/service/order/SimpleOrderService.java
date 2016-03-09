@@ -1,11 +1,11 @@
 package com.lab.delivery.service.order;
 
-import com.lab.delivery.domain.Customer;
+import com.lab.delivery.domain.user.User;
 import com.lab.delivery.domain.Order;
 import com.lab.delivery.domain.Pizza;
 import com.lab.delivery.domain.discount.Discount;
 import com.lab.delivery.repository.order.OrderRepository;
-import com.lab.delivery.service.customer.CustomerService;
+import com.lab.delivery.service.user.UserService;
 import com.lab.delivery.service.pizza.PizzaService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +28,11 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
     private ApplicationContext applicationContext;
     private OrderRepository orderRepository;
     private PizzaService pizzaService;
-    private CustomerService customerService;
+    private UserService customerService;
     private Discount discount;
 
     @Autowired
-    public SimpleOrderService(OrderRepository orderRepository, PizzaService pizzaService, CustomerService customerService, Discount discount) {
+    public SimpleOrderService(OrderRepository orderRepository, PizzaService pizzaService, UserService customerService, Discount discount) {
         this.orderRepository = orderRepository;
         this.pizzaService = pizzaService;
         this.customerService = customerService;
@@ -40,14 +40,14 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
     }
 
 
-    public Order placeNewOrder(Customer customer, Integer ... pizzasID) {
+    public Order placeNewOrder(User user, Integer ... pizzasID) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
 
         for(Integer id : pizzasID){
             pizzas.add(getPizzaByID(id));
         }
 
-        Order newOrder = new Order(1, customer, pizzas, NEW);
+        Order newOrder = new Order(1, user, pizzas, NEW);
         saveOrder(newOrder);
         return newOrder;
     }
@@ -58,14 +58,15 @@ public class SimpleOrderService implements OrderService, ApplicationContextAware
     }
 
     public int payOrder(Order order) {
-        int price = discount.makeDiscount(order);
-        if (price * MAX_ACCUMULATIVE_DISCOUNT < order.getCustomer().getBonus()) {
-            price *= MAX_ACCUMULATIVE_DISCOUNT;
-        } else {
-            price = price - order.getCustomer().getBonus();
-        }
-        order.getCustomer().addToAccumulativeCard(price);
-        return price;
+//        int price = discount.makeDiscount(order);
+//        if (price * MAX_ACCUMULATIVE_DISCOUNT < order.getUser().getBonus()) {
+//            price *= MAX_ACCUMULATIVE_DISCOUNT;
+//        } else {
+//            price = price - order.getUser().getBonus();
+//        }
+//        order.getUser().addToAccumulativeCard(price);
+//        return price;
+        return 0;
     }
 
 

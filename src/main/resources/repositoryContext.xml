@@ -13,47 +13,6 @@
 
     <context:component-scan base-package="com.lab.delivery.domain" />
     <context:component-scan base-package="com.lab.delivery.repository" />
-
-
-    <!--    <bean id="propertyConfigurer"
-              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-            <property name="location" value="classpath:/jdbc.properties" />
-        </bean> -->
-
-    <!--<context:property-placeholder system-properties-mode="OVERRIDE" location="classpath:jdbc.properties"/>-->
-
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
-          <!--destroy-method="close">-->
-        <!--<property name="driverClassName" value="${driver}"/>-->
-        <!--<property name="url" value="${url}"/>-->
-        <!--<property name="username" value="${user}"/>-->
-        <!--<property name="password" value="${password}"/>-->
-        <!--<property name="initialSize" value="5"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="entityManagerFactory"-->
-          <!--class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--&lt;!&ndash;        <property name="persistenceUnitName" value="HiberantePostgreSQL" />&ndash;&gt;-->
-        <!--<property name="jpaVendorAdapter">-->
-            <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />-->
-        <!--</property>-->
-        <!--<property name="packagesToScan" value="com.lab.delivery.domain"/>-->
-        <!--<property name="jpaProperties">-->
-            <!--<props>-->
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>-->
-                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
-                <!--<prop key="hibernate.show_sql">true</prop>-->
-                <!--<prop key="hibernate.format_sql">true</prop>-->
-            <!--</props>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />-->
     <bean name="DatabaseConfig" class="com.lab.delivery.configuration.DatabaseConfig"/>
     <tx:annotation-driven transaction-manager="transactionManager" />
 

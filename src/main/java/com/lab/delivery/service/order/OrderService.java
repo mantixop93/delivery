@@ -1,12 +1,11 @@
 package com.lab.delivery.service.order;
 
-import com.lab.delivery.domain.Customer;
+import com.lab.delivery.domain.user.User;
 import com.lab.delivery.domain.Order;
-import com.lab.delivery.domain.Pizza;
 
 /**
  * Created by Mantixop on 1/21/16.
  */
 public interface OrderService {
-    Order placeNewOrder(Customer customer, Integer ... pizzasID);
+    Order placeNewOrder(User user, Integer ... pizzasID);
 }

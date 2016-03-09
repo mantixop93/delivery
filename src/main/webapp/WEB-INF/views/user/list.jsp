@@ -12,34 +12,34 @@
 <html>
 <body>
 <div>
-    <h2><s:message code="pizza.pizzas"/></h2>
+    <h2><s:message code="user.users"/></h2>
     <table cellspacing="15" border="1">
         <tr>
             <td>
                 Name
             </td>
             <td>
-                Price
+                Email
             </td>
             <td>
-                Type
+                Role
             </td>
             <td>
         </tr>
-        <c:out value="${pizza.type}"/>
         </td>
-        <c:forEach items="${pizzas}" var="pizza">
+        <c:forEach items="${users}" var="user">
             <tr>
                 <td>
-                    <c:out value="${pizza.name}"/>
+                    <c:out value="${user.name}"/>
                 </td>
                 <td>
-                    <c:out value="${pizza.price}"/>
+                    <c:out value="${user.email}"/>
                 </td>
                 <td>
-                    <c:out value="${pizza.pizzaType}"/>
+                    <c:forEach items="${user.roles}" var="role">
+                        <c:out value="${role.name}"/>
+                    </c:forEach>
                 </td>
-               <td> <a href="<c:url value="/pizza/edit?id=${pizza.id}" />">Edit</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -22,9 +22,9 @@ import javax.sql.DataSource;
 
 public class DatabaseConfig {
 
-    protected static final String PROPERTY_NAME_DATABASE_DRIVER = "org.postgresql.Driver";
+    protected static final String PROPERTY_NAME_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
     protected static final String PROPERTY_NAME_DATABASE_PASSWORD = "root";
-    protected static final String PROPERTY_NAME_DATABASE_URL = "jdbc:postgresql://localhost:5432/delivery";
+    protected static final String PROPERTY_NAME_DATABASE_URL = "jdbc:mysql://localhost/delivery";
     protected static final String PROPERTY_NAME_DATABASE_USERNAME = "root";
 
     private static final String PROPERTY_PACKAGES_TO_SCAN = "com.lab.delivery.domain";
@@ -56,7 +56,7 @@ public class DatabaseConfig {
         adapter.setGenerateDdl(true);
 
 //I'm using MySQL5InnoDBDialect to make my tables support foreign keys
-        adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL9Dialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
         return adapter;
     }
 

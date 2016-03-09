@@ -1,24 +1,22 @@
-package com.lab.delivery.domain;
+package com.lab.delivery.domain.user;
 
 import javax.persistence.*;
 
 /**
- * Created by Mantixop on 1/28/16.
+ * Created by Mantixop on 3/2/16.
  */
-@Entity(name = "address")
-public class Address {
+
+@Entity
+@Table(name = "role")
+public class Role {
 
     @Id
-    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Integer id;
 
-    @Column(name = "address_name")
+    @Column(name = "role_name")
     private String name;
-
-    public Address(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public Integer getId() {
         return id;

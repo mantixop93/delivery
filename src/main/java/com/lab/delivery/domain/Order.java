@@ -1,5 +1,7 @@
 package com.lab.delivery.domain;
 
+import com.lab.delivery.domain.user.User;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,8 +22,8 @@ public class Order {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "order_customer", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "order_user", nullable = false)
+    private User user;
 
     @ManyToMany
     @JoinTable(
@@ -35,9 +37,9 @@ public class Order {
     private Status status;
 
 
-    public Order(Integer id, Customer customer, List<Pizza> pizzas, Status status) {
+    public Order(Integer id, User user, List<Pizza> pizzas, Status status) {
         this.id = id;
-        this.customer = customer;
+        this.user = user;
         this.pizzas = pizzas;
         this.status = status;
     }
@@ -52,12 +54,12 @@ public class Order {
         this.id = id;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Pizza> getPizzas() {
@@ -104,7 +106,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customer=" + customer +
+                ", user=" + user +
                 ", pizzas=" + pizzas +
                 ", status=" + status +
                 '}';
